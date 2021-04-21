@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="justify-content-left">
+        <img [src]="profileImg" class="img-rounded" style="border-radius: 2em;" alt="Profile Pic" width="150px" height="150px" [routerLink]="['/account']">
+    </div>
+    <div class="col">
+        <h3 class="mt-4 mx-4 text-white" >@{{profileUsername}}</h3>   
+        <h3 class="mt-4 mx-4 text-white">{{profileName}}</h3> 
+    </div>
+</div>
+<div class="row" style="width: 3px;background-color: black;">
+    
+</div>
+
+<div class="row">
+    <div *ngFor="let file of filelist" class="card-deck text-center">
+        <div class="card mx-5 my-3" >
+            <img [src]="file.url" alt="Pic" style="width: 240px ; height: 250px;" class="card-img-top" >
+            <div class="card-body" style="background-color:#ccebff ;">
+                <h5>{{file.title}}</h5>
+                <div *ngIf="file.status">
+                    <i class="fa fa-thumbs-up fa-2x mx-1">{{file.likes}}</i>
+                    <i class="fa fa-thumbs-o-down fa-2x mx-1" >{{file.unlikes}}</i>
+                    <i class="fa fa-comments fa-2x mx-1" (click)="doComment(file.id)" aria-hidden="true">{{file.comments}}</i><br>
+                </div>
+                <div *ngIf="file.status === false">
+                    <i class="fa fa-thumbs-o-up fa-2x mx-1">{{file.likes}}</i>
+                    <i class="fa fa-thumbs-down fa-2x mx-1" >{{file.unlikes}}</i>
+                    <i class="fa fa-comments fa-2x mx-1" (click)="doComment(file.id)" aria-hidden="true">{{file.comments}}</i><br>
+                </div>
+                <div *ngIf="file.status === null">
+                    <i class="fa fa-thumbs-o-up fa-2x mx-1" (click)="doLike(file.id)">{{file.likes}}</i>
+                    <i class="fa fa-thumbs-o-down fa-2x mx-1" (click)="doUnlike(file.id)">{{file.unlikes}}</i>
+                    <i class="fa fa-comments fa-2x mx-1" (click)="doComment(file.id)" aria-hidden="true">{{file.comments}}</i><br>
+                </div>
+                <div *ngIf="commenttab === file.id">
+                    <form class="formgroup" [formGroup]="myFormGroup" (ngSubmit)="postComment(file.id)">
+                        <input type="text" class="form-control" [formControl]="myFormGroup.controls['keyword']"  required>
+                        <input type="submit" class="col-sm-3" value="Post" class="btn btn-info"/>
+                    </form>
+                </div>
+            </div>  
+        </div>
+    </div>
+</div>
+
+

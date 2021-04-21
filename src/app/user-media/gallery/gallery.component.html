@@ -1,0 +1,14 @@
+
+<div  class="row mt-4">
+    <div *ngFor="let i of fileslist" class="card-deck text-center">
+        <div class="card mx-5 my-3" >
+            <img [src]="i.url" alt="Pic" style="width: 220px ; height: 250px;" class="card-img-top" (click)="getDetails(i.id)" >
+            <div class="card-body" style="background-color:#ccebff ;">
+                <h5>{{i.title}}</h5>
+                <i class="fa fa-thumbs-up fa-2x mx-1">{{i.likes}}</i>
+                <i class="fa fa-thumbs-down fa-2x mx-1" >{{i.unlikes}}</i>
+                <i class="fa fa-comments fa-2x mx-1" aria-hidden="true">{{i.comments}}</i>
+            </div>  
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="row mt-4">
+<div class="box1 col-4" style="float: left;">
+    
+    <div class="row my-4">
+        <label  class="col-sm-4 col-form-label"><b>Title</b></label>
+        <div class="col-sm-7">
+            <textarea value="{{file.title}}" class="form-control" readonly></textarea>
+        </div>
+    </div>
+    
+    <img src="{{file.url}}" width="200px" height="250px" alt="image  "><br>
+    
+</div>
+<div class="box2 col  ml-3">
+
+    <div class="row my-4">
+        <label  class="col-sm-3 col-form-label"><b>Description</b></label>
+        <div class="col-sm-9">
+            <textarea  value="{{file.description}}" class="form-control" readonly></textarea>
+        </div>
+    </div>
+
+    <div class="row my-4">
+        <label  class="col-sm-3 col-form-label"><b>Tags</b></label>
+        <div class="col-sm-9">
+            <textarea type="text" value="{{file.tags}}" class="form-control" readonly></textarea>
+        </div>
+    </div>
+
+    <div class="my-3">
+        <i id="like1" class="fa fa-thumbs-up mx-3">{{file.likes}}</i>
+        <i class="fa fa-thumbs-down mx-3" >{{file.unlikes}}</i>
+        <div>
+            <i class="fa fa-comments mx-3" aria-hidden="true">Comments</i>
+            <div *ngFor="let comment of file.commentsList">
+                <span class="mx-4"><i class="fa fa-comment" aria-hidden="true">&nbsp;{{comment.userName}}</i></span>&nbsp;&nbsp;&nbsp;
+                <span class="mx-4">{{comment.createdOn}}</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="ml-4">{{comment.comments}}</span>
+                
+            </div>
+        </div>
+        
+    </div>
+
+</div>
+</div>

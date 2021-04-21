@@ -1,0 +1,26 @@
+<div class="row mt-4" >
+    <div class="offset-6 col text-center" style="text-align: right;">
+        
+        <ul class="nav nav-pills justify-content-right">
+            <li class="nav-item mx-2">
+                <a  class="nav-link btn-warning" [routerLink]="['/following']"><b>Following</b></a>
+            </li>
+            <li class="nav-item mx-2">
+                <a class="nav-link btn-warning" [routerLink]="['/follow']"><b>Followers</b> </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+<div *ngFor="let user of followList" class="mx-4 mt-4">
+    <div class="card-deck text-center">
+    <div class="card mx-3 my-3">
+        <img src="{{user.url}}" alt="Image" style="width: 220px;height: 300px;" (click)="getProfile(user.userId)" class="card-img-top">
+        <div class="card-body">
+            <b>{{user.name}}</b><br>
+            <button (click)="doUnfollow(user.userId,user.name)">Unfollow</button>
+        </div>  
+    </div>
+    </div>
+</div>
+</div>
